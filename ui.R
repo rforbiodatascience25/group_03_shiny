@@ -10,7 +10,7 @@ ui <- fluidPage(
     col_widths = 12,
     card(
       titlePanel("About"),
-      helpText("Describe what your app does...")
+      helpText("This little shiny app does the following:")
     )),
   layout_columns(
     col_widths = 12,
