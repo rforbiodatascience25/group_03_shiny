@@ -5,7 +5,7 @@ gene_dna <- function(length, base_probs = c(0.25, 0.25, 0.25, 0.25)){
   }
   if ( sum(base_probs) != 1){
     stop("The probability of A, T, C and G has to equal 1")
-  }
+  } 
   dna_vector <- sample(
     x = c("A", "T", "C", "G"),
     size = length,
