@@ -56,5 +56,16 @@ ui <- fluidPage(
       mainPanel(
         verbatimTextOutput(outputId = "dna")
       )
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      titlePanel("Transcribe RNA"),
+      helpText("Copy paste your DNA to the program to make the transcription(the T into U)"),
+      textInput(inputId = "dna_input",
+                label = "Enter DNA sequence:",
+                value = "",
+                width = "100%"),
+      verbatimTextOutput(outputId = "rna_output")
     ))
 )
