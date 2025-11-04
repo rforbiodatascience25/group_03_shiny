@@ -67,5 +67,33 @@ ui <- fluidPage(
                 value = "",
                 width = "100%"),
       verbatimTextOutput(outputId = "rna_output")
-    ))
+    )
+  ),
+  layout_columns(
+    col_widths = 12,
+    card(
+      card_header("Transcribe RNA output"),
+      mainPanel(
+        verbatimTextOutput(outputId = "rna_output")
+      )
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      titlePanel("Virtual Ribosome"),
+      helpText("Copy paste your RNA to the program to make the translation (RNA into codons).
+               If '_' present, that equals a stop codon!"),
+      textInput(inputId = "rna_input",
+                label = "Enter RNA sequence:",
+                value = "",
+                width = "100%"),
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      card_header("Virtual Ribosome output"),
+      mainPanel(
+        verbatimTextOutput(outputId = "codon_output")
+      )
+    )),
 )
