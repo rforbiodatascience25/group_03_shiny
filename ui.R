@@ -10,12 +10,13 @@ ui <- fluidPage(
     col_widths = 12,
     card(
       titlePanel("About"),
-      helpText("Describe what your app does...")
+      helpText("Follow the natural information flow: DNA → RNA → Protein")
     )),
   layout_columns(
     col_widths = 12,
     card(
-      card_header("Virtual Gene Generator"),
+      titlePanel("Virtual Gene Generator"),
+      style = "background-color:#e3f2fd; border-top:6px solid #2196f3;",
       sliderInput(inputId = "n_bases",
                   label = "Number of bases:",
                   min = 1,
@@ -51,6 +52,7 @@ ui <- fluidPage(
       ))),
   layout_columns(
     col_widths = 12,
+    
     card_dna <- card(
       card_header("DNA:"),
       mainPanel(
@@ -72,4 +74,55 @@ ui <- fluidPage(
         tableOutput(outputId = "basefreq"))
     )
   )
+)
+    card(
+      card_header("Virtual Gene output"),
+      style = "background-color:#90caf9;",
+      mainPanel(
+        verbatimTextOutput(outputId = "dna")
+      )
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      titlePanel("Transcribe RNA"),
+      style = "background-color:#e8f5e9; border-top:6px solid #4caf50;",
+      helpText("Copy paste your DNA to the program to make the transcription(the T into U)"),
+      textInput(inputId = "dna_input",
+                label = "Enter DNA sequence:",
+                value = "",
+                width = "100%"),
+      verbatimTextOutput(outputId = "rna_output")
+    )
+  ),
+  layout_columns(
+    col_widths = 12,
+    card(
+      style = "background-color:#81c784;",
+      card_header("Transcribe RNA output"),
+      mainPanel(
+        verbatimTextOutput(outputId = "rna_output")
+      )
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      style = "background-color:#fff3e0; border-top:6px solid #ff9800;",
+      titlePanel("Virtual Ribosome"),
+      helpText("Copy paste your RNA to the program to make the translation (RNA into codons).
+               If '_' present, that equals a stop codon!"),
+      textInput(inputId = "rna_input",
+                label = "Enter RNA sequence:",
+                value = "",
+                width = "100%"),
+    )),
+  layout_columns(
+    col_widths = 12,
+    card(
+      style = "background-color:#ffb74d;",
+      card_header("Virtual Ribosome output"),
+      mainPanel(
+        verbatimTextOutput(outputId = "codon_output")
+      )
+    )),
 )
