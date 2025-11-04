@@ -1,3 +1,7 @@
+# Load needed libraries
+library("shiny")
+library("bslib")
+
 # Define the Server (Backend)
 server <- function(input, output) {
   dna_string <- reactive({

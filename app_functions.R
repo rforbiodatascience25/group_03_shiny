@@ -1,3 +1,6 @@
+# Load needed libraries
+library("shiny")
+library("bslib")
 
 # Define the "Virtual Gene"-function (See code for functions above)
 # Virtual gene
