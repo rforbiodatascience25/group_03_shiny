@@ -52,6 +52,29 @@ ui <- fluidPage(
       ))),
   layout_columns(
     col_widths = 12,
+    
+    card_dna <- card(
+      card_header("DNA:"),
+      mainPanel(
+        verbatimTextOutput(outputId = "dna"))
+    ),
+    card_rna <- card(
+      card_header("RNA:"),
+      mainPanel(
+        verbatimTextOutput(outputId = "rna"))
+    ),
+    card_aa <- card(
+      card_header("Amino Acid:"),
+      mainPanel(
+        verbatimTextOutput(outputId = "aa"))
+    ),
+    card_basefreq <- card(
+      card_header("Frequencies of Bases:"),
+      mainPanel(
+        tableOutput(outputId = "basefreq"))
+    )
+  )
+)
     card(
       card_header("Virtual Gene output"),
       style = "background-color:#90caf9;",

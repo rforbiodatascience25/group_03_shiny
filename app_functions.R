@@ -20,6 +20,12 @@ gene_dna <- function(length, base_probs = c(0.25, 0.25, 0.25, 0.25)){
 }
 
 transcribe_dna <- function(dna){
+  if (nchar(dna) == 0) {
+    return("Please enter a DNA sequence.")
+  }
+  if (grepl("[^ATCG]", dna)) {
+    return("This is an invalid DNA sequence. Only A, T, C, and G are allowed.")
+  }
   rna <- gsub(
     pattern = "T",
     replacement = "U",
@@ -69,10 +75,10 @@ translate_rna <- function(rna){
 # Simple base counts
 base_freqs <- function(dna){
   if (is.null(dna) || dna == "" ){
-    return( data.frame(dna_vec = factor(c("A", "C", "G", "T")),
+    return( data.frame(Bases = factor(c("A", "C", "G", "T")),
                        Freq = c(0, 0, 0, 0)) ) }
-  dna_vec <- strsplit(x = dna,
+  Bases <- strsplit(x = dna,
                       split = "")
-  base_counts <- table(dna_vec)
+  base_counts <- table(Bases)
   return( as.data.frame.table(base_counts) )
 }
