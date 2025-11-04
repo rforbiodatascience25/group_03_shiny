@@ -1,3 +1,3 @@
 # group_03_shiny
 
-# Finished shiny app link: https://www.shinyapps.io/admin/#/application/15958450
+# Finished shiny app link: https://hql21n-s1946850student.shinyapps.io/project/
