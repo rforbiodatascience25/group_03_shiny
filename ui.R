@@ -2,6 +2,9 @@
 library("shiny")
 library("bslib")
 
+#Add functions
+source(file = "app_functions.R")
+
 # Define the User Interface (Frontend)
 ui <- fluidPage(
   layout_columns(col_widths = 12,
