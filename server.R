@@ -6,4 +6,8 @@ server <- function(input, output) {
                                                                  input$C_probability,
                                                                  input$G_probability))
   })
+  
+  output$rna_output <- renderText({
+    rna_string = transcribe_dna(input$dna_input)
+  })
 }
