@@ -20,12 +20,6 @@ gene_dna <- function(length, base_probs = c(0.25, 0.25, 0.25, 0.25)){
 }
 
 transcribe_dna <- function(dna){
-  if (nchar(dna) == 0) {
-    return("Please enter a DNA sequence.")
-  }
-  if (grepl("[^ATCG]", dna)) {
-    return("This is an invalid DNA sequence. Only A, T, C, and G are allowed.")
-  }
   rna <- gsub(
     pattern = "T",
     replacement = "U",
