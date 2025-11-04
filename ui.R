@@ -1,30 +1,21 @@
 # Define the User Interface (Frontend)
 ui <- fluidPage(
-  layout_columns(
-    col_widths = 12,
-    card(
-      titlePanel("Virtual Central Dogma"),
-      style = "background-color: #f0f0f0; padding: 15px;"
-    )),
-  layout_columns(
-    col_widths = 12,
-    card(
-      titlePanel("About"),
-      helpText("Follow the natural information flow: DNA → RNA → Protein")
-    )),
-  layout_columns(
-    col_widths = 12,
-    card(
-      titlePanel("Virtual Gene Generator"),
-      style = "background-color:#e3f2fd; border-top:6px solid #2196f3;",
-      sliderInput(inputId = "n_bases",
-                  label = "Number of bases:",
-                  min = 1,
-                  max = 60,
-                  value = 30,
-                  width = "100%"),
-      layout_columns(
-        col_widths = c(3, 3, 3, 3),
+  layout_columns(col_widths = 12,
+                 card(titlePanel("Virtual Central Dogma"),
+                      style = "background-color: #f0f0f0; padding: 15px;")),
+  layout_columns(col_widths = 12,
+                 card(titlePanel("About"),
+                      helpText("Follow the natural information flow: DNA → RNA → Protein"))),
+  layout_columns(col_widths = 12,
+                 card(titlePanel("Virtual Gene Generator"),
+                      style = "background-color:#e3f2fd; border-top:6px solid #2196f3;",
+                                      sliderInput(inputId = "n_bases",
+                                                  label = "Number of bases:",
+                                                  min = 1,
+                                                  max = 60,
+                                                  value = 30,
+                                                  width = "100%"),
+      layout_columns(col_widths = c(3, 3, 3, 3),
         numericInput(inputId = "A_probability",
                      label = "Probability of A",
                      value = 0.25,
@@ -48,64 +39,33 @@ ui <- fluidPage(
                      value = 0.25,
                      min = 0,
                      max = 1,
-                     step = 0.1)
-      ))),
-  layout_columns(
-    col_widths = 12,
+                     step = 0.1)))),
+  
+    card(card_header("Virtual Gene output"),
+         style = "background-color:#90caf9;",
+         mainPanel(verbatimTextOutput(outputId = "dna"))),
     
-    card_dna <- card(
-      card_header("DNA:"),
-      mainPanel(
-        verbatimTextOutput(outputId = "dna"))
-    ),
-    card_rna <- card(
-      card_header("RNA:"),
-      mainPanel(
-        verbatimTextOutput(outputId = "rna"))
-    ),
-    card_aa <- card(
-      card_header("Amino Acid:"),
-      mainPanel(
-        verbatimTextOutput(outputId = "aa"))
-    ),
-    card_basefreq <- card(
-      card_header("Frequencies of Bases:"),
-      mainPanel(
-        tableOutput(outputId = "basefreq"))
-    )
-  )
-)
-    card(
-      card_header("Virtual Gene output"),
-      style = "background-color:#90caf9;",
-      mainPanel(
-        verbatimTextOutput(outputId = "dna")
-      )
-    )),
-  layout_columns(
-    col_widths = 12,
-    card(
-      titlePanel("Transcribe RNA"),
-      style = "background-color:#e8f5e9; border-top:6px solid #4caf50;",
-      helpText("Copy paste your DNA to the program to make the transcription(the T into U)"),
-      textInput(inputId = "dna_input",
-                label = "Enter DNA sequence:",
-                value = "",
-                width = "100%"),
-      verbatimTextOutput(outputId = "rna_output")
-    )
-  ),
-  layout_columns(
-    col_widths = 12,
+  layout_columns(col_widths = 12,
+                 card_basefreq <- card(card_header("Frequencies of Bases:"),
+                                       mainPanel(tableOutput(outputId = "basefreq")))),
+  layout_columns(col_widths = 12,
+                 card(titlePanel("Transcribe RNA"),
+                      style = "background-color:#e8f5e9; border-top:6px solid #4caf50;",
+                      helpText("Copy paste your DNA to the program to make the transcription(the T into U)"),
+                      textInput(inputId = "dna_input",
+                                label = "Enter DNA sequence:",
+                                value = "",
+                                width = "100%"),
+                      verbatimTextOutput(outputId = "rna_output"))),
+  
+  layout_columns(col_widths = 12,
     card(
       style = "background-color:#81c784;",
       card_header("Transcribe RNA output"),
       mainPanel(
-        verbatimTextOutput(outputId = "rna_output")
-      )
-    )),
-  layout_columns(
-    col_widths = 12,
+        verbatimTextOutput(outputId = "rna_output")))),
+  
+  layout_columns(col_widths = 12,
     card(
       style = "background-color:#fff3e0; border-top:6px solid #ff9800;",
       titlePanel("Virtual Ribosome"),
@@ -115,14 +75,12 @@ ui <- fluidPage(
                 label = "Enter RNA sequence:",
                 value = "",
                 width = "100%"),
-    )),
-  layout_columns(
-    col_widths = 12,
-    card(
-      style = "background-color:#ffb74d;",
-      card_header("Virtual Ribosome output"),
-      mainPanel(
-        verbatimTextOutput(outputId = "codon_output")
-      )
-    )),
-)
+      )),
+  
+  layout_columns(col_widths = 12,
+                 card(
+                   style = "background-color:#ffb74d;",
+                   card_header("Virtual Ribosome output"),
+                   mainPanel(
+                     verbatimTextOutput(outputId = "codon_output"))))
+  )

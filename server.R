@@ -6,23 +6,13 @@ server <- function(input, output) {
                                                     input$C_probability,
                                                     input$G_probability))
   })
-  rna_string <- reactive({
-    transcribe_dna(dna_string())
-  })
   output$dna <- renderText({
     dna_string()
-  })
-  output$rna <- renderText({
-    rna_string()
-  })
-  output$aa <- renderText({
-    translate_rna(rna_string())
   })
   output$basefreq <- renderTable({
     base_freqs(dna_string())},
     colnames = TRUE
   )
-}
   
   output$rna_output <- renderText({
     rna_string = transcribe_dna(input$dna_input)
